@@ -33,7 +33,30 @@ public class Quiz08 extends HttpServlet{
 		Iterator<String> iter = list.iterator();
 		while(iter.hasNext()) {
 			String line = iter.next();
+//			if (line.contains(search)) {
+//				out.print(line + "<br>");
+//			}
+			
+			// 첫번째
+//			int index = line.indexOf("search");
+//			if (index > -1) {
+//				StringBuffer sb = new StringBuffer();
+//				sb.append(line);
+//				sb.insert(index, "<b>"); // <b> 태그 추가
+//				sb.insert(index + search.length() + 3, "</b>"); // <b>맛집|</맛집>
+//				
+//				out.print(sb + "<br>");
+//			}
+			
+			// 두번째
+//			if (line.contains(search)) {
+//				String[] words = line.split(search);
+//				out.print(words[0] + "<b>" + search + "</b>" + words[1] + "<br>");
+//			}
+			
+			// 세번째
 			if (line.contains(search)) {
+				line = line.replace(search, "<b>" + search + "</b>");//replace의 형태를 신경써야함
 				out.print(line + "<br>");
 			}
 		}
