@@ -21,7 +21,7 @@ public class Quiz09 extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		out.print("<html><head><title></title></head><body>");
 		out.print("<strong>" + name +"</strong>" + "님의 지원이 완료되었습니다.");
-		out.print("<br><b><h3>" + "지원 내용" + "</h3><br>");
+		out.print("<br><strong><h3>" + "지원 내용" + "</h3><br>");
 		out.print(introduce);
 		out.print("</body></html>");
 		
