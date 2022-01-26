@@ -24,5 +24,7 @@ public class Quiz09 extends HttpServlet{
 		out.print("<br><strong><h3>" + "지원 내용" + "</h3></strong><br>");
 		out.print(introduce);
 		out.print("</body></html>");
+		
+		// 테스트용 주석
 	}
 }
