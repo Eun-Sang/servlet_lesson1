@@ -45,7 +45,7 @@
 		<tbody>
 		<%
 			String search = request.getParameter("search");
-			String starPointFilter = request.getParametmer)("overFour");
+			String starPointFilter = request.getParameter("overFour");
 			boolean exclude = starPointFilter != null;
 			
 			for (Map<String, Object> item : list) {
