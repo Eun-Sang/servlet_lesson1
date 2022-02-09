@@ -80,18 +80,18 @@ musicInfo.put("composer", "아이유,이종훈,이채규");
 musicInfo.put("lyricist", "아이유");
 musicList.add(musicInfo);
 
-		Object photo = artistInfo.get("photo");	
+	
 %>
 
 <!-- 아티스트 정보 영역 -->
 <section class="content mt-3 border border-success p-3">
 	<div class="singer-info d-flex ">
 		<div class="profile"></div>
-			<img alt="가수사진" src="<%=photo %>" width="150px">
+			<img alt="가수사진" src="<%=artistInfo.get("photo"); %>" width="150px">
 		<div class="info ml-4">
-			<h3>-</h3>
-			<div>-</div>
-			<div>-</div>
+			<h3><%=artistInfo.get("name");  %></h3>
+			<div><%=artistInfo.get("debut");  %></div>
+			<div><%=artistInfo.get("agency");  %></div>
 		</div>
 	</div>
 	</section>
