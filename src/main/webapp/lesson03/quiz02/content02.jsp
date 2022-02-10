@@ -74,27 +74,14 @@ musicInfo.put("composer", "아이유,이종훈,이채규");
 musicInfo.put("lyricist", "아이유");
 musicList.add(musicInfo);
 %>
-<section class="content ">
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th>no</th>
-				<th>제목</th>
-				<th>앨범</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			for (Map<String, Object> item : musicList) {
-			%>
-			<tr>
-				<td><%=item.get("id")%></td>
-				<td><a href=""><%=item.get("title")%></a></td>
-				<td><%=item.get("album")%></td>
-			</tr>
-			<%
-			}
-			%>
-		</tbody>
-	</table>
-</section>
+<section class="content mt-3 border border-success p-3">
+	<div class="sing-info d-flex ">
+		<div class="cover"></div>
+			<img alt="앨범아트" src="<%=musicInfo.get("thumbnail"); %>" width="150px">
+		<div class="info ml-4">
+			<h3><%=artistInfo.get("time");  %></h3>
+			<div><%=artistInfo.get("composer");  %></div>
+			<div><%=artistInfo.get("lyricist");  %></div>
+		</div>
+	</div>
+	</section>
