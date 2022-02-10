@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
-
 <%
 List<Map<String, Object>> musicList = new ArrayList<>();
 
@@ -73,15 +72,63 @@ musicInfo.put("time", 217);
 musicInfo.put("composer", "아이유,이종훈,이채규");
 musicInfo.put("lyricist", "아이유");
 musicList.add(musicInfo);
+
+	//상세정보를 보여줄 타겟 맵 세팅
+	Map<String, Object> target = null;
+	
+	//1. 목록에서 클릭한 경우
+	if (request.getParameter("id") != null) {
+	int id = Integer.parseInt(request.getParameter("id"));
+	for (Map<String, Object> music : musicList) {
+		if (id == (int)music.get("id")) {
+			target = music;
+			break;
+		}
+	}
+	}
+	
+	//2. 상단에서 검색한 경우(search값이 들어옴)
+	
+	if (request.getParameter("search") != null) {
+		String search = request.getParameter("search");
+		
+		for (Map<String, Object> music : musicList) {
+			if (search.equals(music.get("title"))) {
+				target = music;
+				break;
+			}
+		}
+	}
 %>
+<h3 class="mt-3">곡 정보</h3>
+
 <section class="content mt-3 border border-success p-3">
-	<div class="sing-info d-flex ">
-		<div class="cover"></div>
-			<img alt="앨범아트" src="<%=musicInfo.get("thumbnail"); %>" width="150px">
+	<div class="music-info d-flex ">
+		<div class="profile"></div>
+		<img alt="앨범커버" src="<%=target.get("thumbnail")%>" width="150px">
 		<div class="info ml-4">
-			<h3><%=artistInfo.get("time");  %></h3>
-			<div><%=artistInfo.get("composer");  %></div>
-			<div><%=artistInfo.get("lyricist");  %></div>
+			<h1><%=target.get("title")%></h1>
+			<div class="text-success font-weight-bold mt-2"><%=target.get("singer")%></div>
+			<div class="d-flex text-secondary mt-2">
+				<div>
+					앨범 <br> 
+					재생시간 <br> 
+					작곡가<br> 
+					작사가
+				</div>
+				<div class="ml-4">
+					<%=target.get("album")%><br>
+					 <%=(int)target.get("time") / 60 %> : <%=(int)target.get("time") % 60 %><br> 
+					 <%=target.get("composer")%> <br> 
+					 <%=target.get("lyricist")%>
+				</div>
+			</div>
 		</div>
 	</div>
-	</section>
+
+	<h3  class="mt-3">가사</h3>
+	<hr>
+	<span>가사 정보 없음</span>
+</section>
+
+

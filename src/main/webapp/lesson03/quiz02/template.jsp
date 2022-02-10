@@ -16,8 +16,8 @@
   #wrap {weight: 1200px; height:900px;}
   header {height: 10%;} 
   
-  .singer {height: 20%;} 
-  .content {height: 20%;} 
+ /*.content {height: 30%}*/
+  
    
   </style>
   

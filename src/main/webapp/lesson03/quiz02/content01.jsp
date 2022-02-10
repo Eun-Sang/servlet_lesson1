@@ -87,11 +87,11 @@ musicList.add(musicInfo);
 <section class="content mt-3 border border-success p-3">
 	<div class="singer-info d-flex ">
 		<div class="profile"></div>
-			<img alt="가수사진" src="<%=artistInfo.get("photo"); %>" width="150px">
+			<img alt="가수사진" src="<%=artistInfo.get("photo") %>" width="150px">
 		<div class="info ml-4">
-			<h3><%=artistInfo.get("name");  %></h3>
-			<div><%=artistInfo.get("debut");  %></div>
-			<div><%=artistInfo.get("agency");  %></div>
+			<h3><%=artistInfo.get("name")  %></h3>
+			<div><%=artistInfo.get("debute")  %></div>
+			<div><%=artistInfo.get("agency")  %></div>
 		</div>
 	</div>
 	</section>
@@ -110,7 +110,7 @@ musicList.add(musicInfo);
 		%>
 			<tr>
 				<td><%=item.get("id")%></td>
-				<td><a href=""><%=item.get("title")%></a></td>
+				<td><a href="./template2.jsp?id=<%=item.get("id")%>"><%=item.get("title")%></a></td>
 				<td><%=item.get("album")%></td>
 			</tr>
 			<%

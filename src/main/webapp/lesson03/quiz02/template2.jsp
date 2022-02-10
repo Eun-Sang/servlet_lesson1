@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,17 +17,19 @@
   #wrap {weight: 1200px; height:900px;}
   header {height: 10%;} 
   
-  .singer {height: 20%;} 
-  .content {height: 20%;} 
+  /*.content {height: 30%} */
+  
    
   </style>
   
 </head>
+
 <body>
 	<div id=wrap>
 	<jsp:include page="./header.jsp" />
 	<jsp:include page="./menu.jsp" />
 	<jsp:include page="./content02.jsp" />
+	
 	<jsp:include page="./footer.jsp" />
 	
 	
