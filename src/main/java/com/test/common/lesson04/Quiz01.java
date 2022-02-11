@@ -23,22 +23,29 @@ public class Quiz01 extends HttpServlet{
 		MysqlService mysql = MysqlService.getInstance();
 		mysql.connection();
 		
+		//insert Query 
+		String insertQuery = "insert into `real_estate` (`realtorId`,`address`,`area`,`type`,`price`,`rentPrice`)"
+				 + "values (3, '헤라펠리스 101동 5305호', 350,'매매',1500000, NULL)";
+		
 		//2.
-		String selectQuery = "select * from `real_estate`";
 		
-		//3.
-		PrintWriter out = response.getWriter();
 		try {
-			ResultSet resultset = mysql.select(selectQuery);
-			while (resultset.next()) {
-				out.println();
+			String selectQuery = "select `address`,`area`,`type` from `real_estate` order by `id` desc limit 10";
+			ResultSet result = mysql.select(selectQuery);
+			
+			// 출력
+			PrintWriter out = response.getWriter();
+			while (result.next()) {
+				String address = result.getString("address");
+				int area = result.getInt("area");
+				String type = result.getString("type");
 				
+				out.println("매물 주소:" + address + " , 면적:" + area + " , 타입:" + type);
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
 		}
-		
-		
 		//4.
 		mysql.disconnection();
 	}	
