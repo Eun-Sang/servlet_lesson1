@@ -10,37 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.test.common.MysqlService;
 
-@WebServlet("/lesson04/site_insert")
-public class Quiz02favorites_insert extends HttpServlet{
+//@WebServlet("quiz02_delete")
+public class Quiz02_delete extends HttpServlet{
 
 	@Override
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws IOException {
-		//
-		String name = request.getParameter("name");
-		String address = request.getParameter("address");
+		// 리퀘스트 파리미터 아이디 꺼내기
+		int id = Integer.parseInt(request.getParameter("id"));
 		
+		// DB 연결
 		MysqlService mysql = MysqlService.getInstance();
 		mysql.connection();
 		
-		String insertQuery = "insert into `Favorites` (`site`, `address`)"
-				+ "values (\"인스타\", \"https://www.instagram.com\"),"
-				+ "		(\"다음\", \"https://www.daum.net\"),"
-				+ "		(\"네이버\", \"https://www.naver.com\"),"
-				+ "		(\"구글\", \"https://www.google.com\"),"
-				+ "		(\"마론달\", \"https://www.marondal.com\")";
+		// delete Query 수행
+		String deleteQuery = "delete from 'Favorites' where `id`=" + id;
 		try {
-			mysql.update(insertQuery);
+			mysql.update(deleteQuery);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// 연결해제
 		
+		// DB연결 해제
 		mysql.disconnection();
 		
 		// redirect
-		
 		response.sendRedirect("/lesson04/quiz02_1.jsp");
-		
-		
 	}
 }

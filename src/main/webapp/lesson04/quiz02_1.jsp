@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>즐겨찾기 목록</title>
+<title>즐겨찾기 추가</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -15,28 +15,29 @@
   
 </head>
 <body>
-<%
-	MysqlService mysql = MysqlService.getInstance();
-	mysql.connection();
+<%--
+	flow
 	
-	String selectQuery = "select * from `Favorites`";
-	ResultSet result = mysql.select("selectQuery");
+	1) 유저 추가: input form -> servlet(insert query) -> user list(select query)
+	2) 유저 삭제: user list에서 삭제 클릭 -> servlet(delete query) -> user list 
+	 
+	--%>
+
 	
-%>
-	<table class="table">
-	<thead>
-		<tr>
-			<th>사이트</th>
-			<th>사이트주소</th>
-			<th>삭제하기</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><%= result.getString("site") %></td>
-			<td><%= result.getString("address") %></td>			
-		</tr>
-	</tbody>
-	</table>
+	<div class="container">
+		<h1>즐겨찾기 추가</h1>
+		<div class="form-group">
+		<form method="post" action="/lesson04/quiz02_insert">
+			<label>사이트명: <input type="text" name="site" class="form-control col-4"></label>
+			<label>사이트 주소: <input type="text" name="address" class="form-control col-5"></label>
+		</div>
+		<div class="form-group">
+			<input type="submit" class="btn btn-success" values="추가">
+		</div>
+	</form>
+	</div>
+	
+	
+	
 </body>
 </html>
